@@ -1,0 +1,36 @@
+/{
+    leds {
+        led4: led_4 {
+			gpios = <&gpio0 17 GPIO_ACTIVE_HIGH>;
+			label = "Green LED 4";
+		};
+        led5: led_5 {
+			gpios = <&gpio1 15 GPIO_ACTIVE_HIGH>;
+			label = "RED LED 5";
+		};
+    };
+    buttons {
+        button4: button_4 {
+            gpios = <&gpio1 13 (GPIO_PULL_UP | GPIO_ACTIVE_HIGH)>;
+            label = "Push button 5";
+            zephyr,code = <INPUT_KEY_0>;
+        };
+    };
+    aliases {
+        btn5 = &button4;
+        led4 = &led4;
+        led5 = &led5;
+    };
+};
+&button0 {
+    gpios = <&gpio0 23 (GPIO_PULL_UP | GPIO_ACTIVE_HIGH)>;
+    label = "Push button 1";
+    zephyr,code = <INPUT_KEY_0>;
+};
+
+&qspi {
+    status = "disabled";
+};
+&spi4 {
+    status = "disabled";
+};
